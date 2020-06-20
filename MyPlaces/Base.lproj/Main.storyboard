@@ -67,6 +67,7 @@
                                     <outlet property="locationLabel" destination="i3z-rN-B4f" id="DG4-qU-Y4B"/>
                                     <outlet property="nameLabel" destination="lt1-dK-iUs" id="2Me-zH-NtS"/>
                                     <outlet property="typeLabel" destination="27m-rJ-kAT" id="bZu-LF-078"/>
+                                    <segue destination="5nv-TE-6ZD" kind="show" identifier="showDetail" id="vmw-kI-gfQ"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -75,10 +76,10 @@
                             <outlet property="delegate" destination="9Ig-Bm-Xfj" id="SDP-c7-7zX"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="My Places" id="yyd-kf-JTU">
+                    <navigationItem key="navigationItem" title="My Places" largeTitleDisplayMode="never" id="yyd-kf-JTU">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="fCW-ox-u98">
                             <connections>
-                                <segue destination="SHF-Gr-DdM" kind="presentation" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="R5g-IB-Zb2"/>
+                                <segue destination="SHF-Gr-DdM" kind="show" id="R5g-IB-Zb2"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -232,24 +233,37 @@
                             <outlet property="delegate" destination="5nv-TE-6ZD" id="RGe-DB-Ws8"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="New Place" id="O1u-is-eC9">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="B1Z-Jr-sR4"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="E5k-Jf-9Qp"/>
+                    <navigationItem key="navigationItem" title="New Place" largeTitleDisplayMode="always" id="O1u-is-eC9">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="TBO-kg-vpz">
+                            <connections>
+                                <action selector="cancelAction:" destination="5nv-TE-6ZD" id="Jpd-pM-iQV"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="E5k-Jf-9Qp">
+                            <connections>
+                                <segue destination="ICv-6Z-gVg" kind="unwind" unwindAction="unwindSegue:" id="v60-EI-jka"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="imageOfPlace" destination="dCO-nA-Fqk" id="6XU-h1-Ti8"/>
+                        <outlet property="placeImage" destination="dCO-nA-Fqk" id="6XU-h1-Ti8"/>
+                        <outlet property="placeLocation" destination="GoV-1h-1Fz" id="TJl-ci-Ms6"/>
+                        <outlet property="placeName" destination="ovl-jf-Sh9" id="HEn-Yk-c0S"/>
+                        <outlet property="placeType" destination="UVM-uY-DXA" id="asS-3w-VtE"/>
+                        <outlet property="saveButton" destination="E5k-Jf-9Qp" id="Jc7-ry-L0j"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gIa-xC-fbb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="ICv-6Z-gVg" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1653.5999999999999" y="29.23538230884558"/>
+            <point key="canvasLocation" x="972" y="30"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ins-rU-eJN">
             <objects>
                 <navigationController id="aNv-IA-gDS" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="1kh-gS-0th">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="1kh-gS-0th">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" name="SnellRoundhand-Bold" family="Snell Roundhand" pointSize="24"/>
@@ -268,6 +282,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="SHF-Gr-DdM" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="tUE-77-Ozm"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="lJo-fi-1uj">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -279,9 +294,12 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LbM-Pq-epw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="917.60000000000002" y="29.23538230884558"/>
+            <point key="canvasLocation" x="972" y="-745"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="vmw-kI-gfQ"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="Photo" width="195" height="196"/>
     </resources>
